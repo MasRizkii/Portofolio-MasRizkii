@@ -1,0 +1,339 @@
+.gooey-nav-container {
+  --color-1: #2563eb;
+  --color-2: #7c3aed;
+  --color-3: #a855f7;
+  --color-4: #d946ef;
+
+  --nav-text: rgb(255 255 255 / 72%);
+  --nav-text-hover: #ffffff;
+  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.gooey-nav-container nav {
+  position: relative;
+  display: flex;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.gooey-nav-container nav ul {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  margin: 0;
+  padding: 0;
+
+  color: var(--nav-text);
+  list-style: none;
+}
+
+.gooey-nav-container nav ul li {
+  position: relative;
+  isolation: isolate;
+
+  border-radius: 999px;
+  color: var(--nav-text);
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.gooey-nav-container nav ul li:hover:not(.active) {
+  color: var(--nav-text-hover);
+  background: rgb(168 85 247 / 8%);
+  transform: translateY(-1px);
+}
+
+.gooey-nav-container nav ul li a {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 36px;
+  padding: 0.55rem 0.9rem;
+
+  color: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+  outline: 2px solid #a855f7;
+  outline-offset: 3px;
+}
+
+/* Pill aktif utama */
+
+.gooey-nav-container nav ul li::after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 999px;
+
+  opacity: 0;
+
+  background: linear-gradient(
+    135deg,
+    #6d28d9 0%,
+    #8b3ee8 52%,
+    #a855f7 100%
+  );
+
+  box-shadow:
+    0 6px 18px rgb(124 58 237 / 24%),
+    inset 0 1px 0 rgb(255 255 255 / 16%);
+
+  transform: scale(0.82);
+
+  transition:
+    opacity 220ms ease,
+    transform 350ms var(--nav-ease);
+}
+
+.gooey-nav-container nav ul li.active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Sembunyikan teks asli agar tidak dobel */
+
+.gooey-nav-container nav ul li.active a {
+  color: transparent;
+  text-shadow: none;
+}
+
+/* Layer efek bergerak */
+
+.gooey-nav-container .effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+
+  opacity: 1;
+  pointer-events: none;
+
+  transition:
+    left 350ms var(--nav-ease),
+    top 350ms var(--nav-ease),
+    width 350ms var(--nav-ease),
+    height 350ms var(--nav-ease);
+}
+
+/* Teks aktif duplikat */
+
+.gooey-nav-container .effect.text {
+  z-index: 4;
+
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transition:
+    opacity 160ms ease,
+    transform 300ms var(--nav-ease);
+}
+
+.gooey-nav-container .effect.text.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Efek gooey hanya untuk partikel */
+
+.gooey-nav-container .effect.filter {
+  z-index: 1;
+
+  filter:
+    blur(4px)
+    contrast(10);
+
+  mix-blend-mode: normal;
+}
+
+.gooey-nav-container .effect.filter::before {
+  display: none;
+  content: none;
+}
+
+/*
+  Gunakan warna solid di layer filter.
+  Jangan gunakan gradient di sini karena contrast()
+  akan memecah gradient menjadi dua blok warna.
+*/
+
+.gooey-nav-container .effect.filter::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+
+  inset: 0;
+  border-radius: 999px;
+
+  opacity: 0;
+  background: #8b3ee8;
+  transform: scale(0.75);
+}
+
+.gooey-nav-container .effect.active::after {
+  animation: gooey-pill 350ms var(--nav-ease) both;
+}
+
+@keyframes gooey-pill {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+
+  to {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+}
+
+/* Partikel */
+
+.gooey-nav-container .particle,
+.gooey-nav-container .point {
+  display: block;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+
+  opacity: 0;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.gooey-nav-container .particle {
+  --time: 500ms;
+
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+
+  animation:
+    gooey-particle
+    var(--time)
+    ease
+    1
+    -150ms;
+}
+
+.gooey-nav-container .point {
+  opacity: 1;
+  background: var(--color);
+
+  box-shadow:
+    0 0 5px var(--color),
+    0 0 10px rgb(168 85 247 / 18%);
+
+  animation:
+    gooey-point
+    var(--time)
+    ease
+    1
+    -150ms;
+}
+
+@keyframes gooey-particle {
+  0% {
+    opacity: 1;
+
+    transform:
+      rotate(0deg)
+      translate(
+        var(--start-x),
+        var(--start-y)
+      );
+
+    animation-timing-function:
+      cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  70% {
+    opacity: 1;
+
+    transform:
+      rotate(calc(var(--rotate) * 0.5))
+      translate(
+        calc(var(--end-x) * 1.1),
+        calc(var(--end-y) * 1.1)
+      );
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      rotate(var(--rotate))
+      translate(
+        calc(var(--end-x) * 0.4),
+        calc(var(--end-y) * 0.4)
+      );
+  }
+}
+
+@keyframes gooey-point {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform:
+      scale(calc(var(--scale) * 0.4));
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(var(--scale));
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gooey-nav-container *,
+  .gooey-nav-container *::before,
+  .gooey-nav-container *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

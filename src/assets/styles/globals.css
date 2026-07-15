@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", Arial, sans-serif;
+  color: #ffffff;
+  background: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --background: #242424;
+  --surface: #584860;
+  --surface-dark: #302c33;
+  --primary: #a946f4;
+  --secondary: #1769e8;
+  --text: #ffffff;
+  --muted: #bbb4c0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--background);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: white;
+  background: var(--primary);
+}
+
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(90deg, #7f56ff, #d75bdc);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.gradient-button {
+  background: linear-gradient(90deg, #1769e8, #a946f4);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgb(169 70 244 / 25%);
+}
+
+.glass-card {
+  border: 1px solid rgb(255 255 255 / 18%);
+  background: rgb(48 44 51 / 84%);
+  backdrop-filter: blur(12px);
+}
+
+.dot-grid {
+  width: 120px;
+  height: 85px;
+  opacity: 0.75;
+  background-image: radial-gradient(#a946f4 2px, transparent 2px);
+  background-size: 14px 14px;
+}
