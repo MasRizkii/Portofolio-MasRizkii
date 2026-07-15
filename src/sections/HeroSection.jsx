@@ -5,7 +5,11 @@ import Container from "../components/common/Container";
 import Button from "../components/common/Button";
 import CodeCard from "../components/cards/CodeCard";
 import DecorativeDots from "../components/ui/DecorativeDots";
-import LightPillar from "../components/ui/LightPillar";
+import { lazy, Suspense } from "react";
+
+const LightPillar = lazy(() =>
+  import("../components/ui/LightPillar")
+);
 import GradientText from "../components/ui/GradientText";
 
 function HeroSection() {
@@ -14,21 +18,23 @@ function HeroSection() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden pt-28"
     >
+      <Suspense fallback={null}>
       <LightPillar
   topColor="#5227ff"
-  bottomColor="#a946f4"
-  intensity={0.6}
-  rotationSpeed={0.12}
-  interactive={false}
-  glowAmount={0.004}
-  pillarWidth={2.8}
-  pillarHeight={0.45}
-  noiseIntensity={0.2}
-  mixBlendMode="screen"
-  pillarRotation={-12}
-  quality="medium"
-  className="pointer-events-none z-0 opacity-60"
+    bottomColor="#a946f4"
+    intensity={0.6}
+    rotationSpeed={0.12}
+    interactive={false}
+    glowAmount={0.004}
+    pillarWidth={2.8}
+    pillarHeight={0.45}
+    noiseIntensity={0.2}
+    mixBlendMode="screen"
+    pillarRotation={-12}
+    quality="low"
+    className="pointer-events-none z-0 opacity-60"
 />
+</Suspense>
 
 <div
   aria-hidden="true"
