@@ -21,13 +21,13 @@ export const socialMedia = [
   {
     id: 3,
     name: "Instagram",
-    url: "https://instagram.com/username",
+    url: "https://instagram.com/maasrizky_",
     icon: FaInstagram,
   },
   {
     id: 4,
     name: "TikTok",
-    url: "https://tiktok.com/@username",
+    url: "https://tiktok.com/@kangrizkiii_",
     icon: FaTiktok,
   },
 ];

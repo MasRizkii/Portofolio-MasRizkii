@@ -71,7 +71,7 @@ function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="mailto:mohammadrizki.ramadhani24@gmail.com">
+            <Button href="https://wa.me/6287707001216">
               Contact Me
               <HiPhone />
             </Button>
@@ -158,10 +158,10 @@ function HeroSection() {
           </div>
         </div>
 
-        <div className="relative min-h-[430px] sm:min-h-[520px] sm:min-h-[600px] lg:min-h-[600px]">
+        <div className="relative min-h-[430px] sm:min-h-[600px] lg:min-h-[600px]">
           <div className="absolute bottom-0 left-2 h-[600px] w-[440px] rounded-t-full bg-gradient-to-t from-[#1769e8]/30 to-[#a946f4]/5 blur-2xl md:left-10" />
 
-          <div className="absolute bottom-0 left-1/2 z-20 flex h-[520px] w-[360px] -translate-x-1/2 items-end justify-center overflow-hidden sm:h-[650px] sm:w-[450px] lg:left-[-60px] lg:h-[920px] lg:w-[570px] lg:translate-x-0">
+          <div className="absolute bottom-[-50px] left-[-100px] z-20 flex h-[650px] w-[490px] items-end justify-center overflow-hidden sm:left-[-50px] sm:h-[650px] sm:w-[450px] lg:left-[-100px] lg:h-[920px] lg:w-[570px]">
             <span className="absolute bottom-40 text-7xl font-bold text-white/5">
               R
             </span>
@@ -176,7 +176,7 @@ function HeroSection() {
             />
           </div>
 
-          <div className="absolute right-[-35px] top-[80px] z-30 w-[280px] origin-top-right scale-[0.7] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-140px] lg:top-[70px] lg:w-[380px] lg:scale-[0.85]">
+          <div className="absolute right-[-50px] top-[120px] z-30 w-[480px] origin-top-right scale-[0.4] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-140px] lg:top-[70px] lg:w-[380px] lg:scale-[0.85]">
             <CodeCard />
           </div>
         </div>

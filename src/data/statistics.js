@@ -8,13 +8,13 @@ import {
 export const statistics = [
   {
     id: 1,
-    value: "4+",
+    value: "2+",
     label: "Years Experience",
     icon: HiOutlineBookOpen,
   },
   {
     id: 2,
-    value: "30+",
+    value: "15+",
     label: "Projects Completed",
     icon: HiOutlineCodeBracket,
   },
@@ -26,7 +26,7 @@ export const statistics = [
   },
   {
     id: 4,
-    value: "80%",
+    value: "90%",
     label: "Client Satisfaction",
     icon: HiOutlineTrophy,
   },

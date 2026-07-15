@@ -35,7 +35,7 @@ function ContactSection() {
           quote="Rizki is an exceptional developer who delivers high-quality work on time. His attention to detail and problem-solving skills are outstanding."
           name="Evan Valentinus"
           role="CEO, Crocodic"
-          avatar="/images/testimonials/evan-valentinus.webp"
+          avatar="/images/testimonials/2.jpeg"
         />
 
         <div>
