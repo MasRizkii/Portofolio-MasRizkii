@@ -25,7 +25,7 @@ function ContactSection() {
             opportunities. Let&apos;s create something amazing together!
           </p>
 
-          <Button href="mailto:mohammadrizki.ramadhani24@gmail.com" className="mt-7">
+          <Button href="https://wa.me/6287707001216" className="mt-7">
             Contact Me
             <HiPhone />
           </Button>
