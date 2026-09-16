@@ -14,7 +14,7 @@ function SkillsSection() {
           title="Technologies I Master"
         />
 
-        <div className="mt-14 grid gap-x-10 gap-y-8 md:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-4xl gap-x-12 gap-y-8 md:grid-cols-2">
           {skillColumns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex flex-col gap-7">
               {column.map((skill) => (

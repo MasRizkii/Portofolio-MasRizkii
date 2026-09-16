@@ -123,7 +123,7 @@ function Navbar() {
           onClick={() =>
             setIsOpen((current) => !current)
           }
-          className="text-3xl md:hidden"
+          className="flex h-12 w-12 items-center justify-center rounded-xl text-4xl text-white transition hover:bg-white/10 hover:text-[#b85cff] active:scale-95 md:hidden"
         >
           {isOpen ? <HiXMark /> : <HiBars3 />}
         </button>

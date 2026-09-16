@@ -4,7 +4,7 @@ export const projects = [
     title: "LaundryQu - Landing Page",
     description:
       "Layanan laundry premium dengan penjemputan gratis, higienis, disetrika rapi, dan estimasi waktu selesai yang cepat.",
-    technologies: ["React", "Tailwind CSS", "Vite"],
+    technologies: ["Laravel", "Inertia.js", "Vue.js", "Tailwind CSS"],
     image: "/images/projects/laundry.png",
     demoUrl: "https://laundry-landingpage.vercel.app",
     repositoryUrl: "https://github.com/MasRizkii",
@@ -14,7 +14,7 @@ export const projects = [
     title: "Golden Minisoccer - Booking System",
     description:
       "Platform booking lapangan minisoccer standar FIFA real-time dengan sistem anti bentrok jadwal dan konfirmasi otomatis.",
-    technologies: ["React", "Tailwind CSS", "Vite"],
+    technologies: ["Laravel", "Inertia.js", "Vue.js", "Tailwind CSS"],
     image: "/images/projects/minisoccer.png",
     demoUrl: "https://minisoccer-booking-sigma.vercel.app",
     repositoryUrl: "https://github.com/MasRizkii",
@@ -24,7 +24,7 @@ export const projects = [
     title: "Zona Kamera - Rental Multimedia",
     description:
       "Katalog penyewaan kamera, lensa, dan aksesoris terlengkap di Semarang dengan sistem reservasi mudah tanpa ribet.",
-    technologies: ["React", "Tailwind CSS", "Vite"],
+    technologies: ["Next.js", "Tailwind CSS"],
     image: "/images/projects/zonakamera.png",
     demoUrl: "https://zonakamera-one.vercel.app",
     repositoryUrl: "https://github.com/MasRizkii",

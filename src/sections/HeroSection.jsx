@@ -1,13 +1,10 @@
-import { HiArrowUpRight } from "react-icons/hi2";
-import { FaWhatsapp } from "react-icons/fa6";
+import { HiArrowUpRight, HiPhone } from "react-icons/hi2";
 import {
   SiHtml5,
   SiCss,
   SiJavascript,
   SiReact,
-  SiNextdotjs,
   SiTailwindcss,
-  SiNodedotjs,
   SiLaravel,
   SiPhp,
   SiMysql,
@@ -77,18 +74,6 @@ const technologies = [
   {
     node: (
       <span
-        title="Next.js"
-        aria-label="Next.js"
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-white"
-      >
-        <SiNextdotjs />
-      </span>
-    ),
-    title: "Next.js",
-  },
-  {
-    node: (
-      <span
         title="Tailwind CSS"
         aria-label="Tailwind CSS"
         className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#38bdf8]"
@@ -97,18 +82,6 @@ const technologies = [
       </span>
     ),
     title: "Tailwind CSS",
-  },
-  {
-    node: (
-      <span
-        title="Node.js"
-        aria-label="Node.js"
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#83cd29]"
-      >
-        <SiNodedotjs />
-      </span>
-    ),
-    title: "Node.js",
   },
   {
     node: (
@@ -180,7 +153,7 @@ function HeroSection() {
       <DecorativeDots className="right-20 top-16 hidden md:block" />
 
       <Container className="relative grid items-center gap-14 py-16 lg:grid-cols-[1fr_1.05fr]">
-        <div className="relative z-10">
+        <div className="relative z-10 w-full min-w-0 max-w-full">
           <span className="inline-flex rounded-md bg-[#55247d] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#db9dff]">
             I'm a web developer
           </span>
@@ -209,7 +182,7 @@ function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="https://wa.me/6287707001216">
               Contact Me
-              <FaWhatsapp className="text-lg text-green-400" />
+              <HiPhone />
             </Button>
 
             <Button
@@ -221,12 +194,12 @@ function HeroSection() {
             </Button>
           </div>
 
-          <div className="mt-10 max-w-lg">
+          <div className="mt-10 w-full max-w-full sm:max-w-lg">
             <p className="mb-4 text-xs uppercase tracking-wider text-white/70">
               Technologies I work with
             </p>
 
-            <div className="w-full overflow-hidden rounded-2xl bg-white/5 p-2">
+            <div className="w-full max-w-full overflow-hidden rounded-2xl bg-white/5 p-2">
               <LogoLoop
                 logos={technologies}
                 speed={35}

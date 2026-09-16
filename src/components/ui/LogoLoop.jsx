@@ -231,8 +231,8 @@ export const LogoLoop = memo(
     const rootClasses = useMemo(
       () =>
         cx(
-          'relative group',
-          isVertical ? 'overflow-hidden h-full inline-block' : 'overflow-x-hidden',
+          'relative group w-full max-w-full overflow-hidden',
+          isVertical ? 'h-full inline-block' : 'block',
           '[--logoloop-gap:32px]',
           '[--logoloop-logoHeight:28px]',
           '[--logoloop-fadeColorAuto:#ffffff]',
@@ -347,7 +347,7 @@ export const LogoLoop = memo(
       () =>
         Array.from({ length: copyCount }, (_, copyIndex) => (
           <ul
-            className={cx('flex items-center', isVertical && 'flex-col')}
+            className={cx('flex items-center list-none m-0 p-0', isVertical && 'flex-col')}
             key={`copy-${copyIndex}`}
             role="list"
             aria-hidden={copyIndex > 0}
@@ -366,6 +366,7 @@ export const LogoLoop = memo(
             ? undefined
             : toCssLength(width)
           : (toCssLength(width) ?? '100%'),
+        maxWidth: '100%',
         ...cssVariables,
         ...style
       }),
