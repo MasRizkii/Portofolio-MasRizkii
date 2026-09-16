@@ -153,7 +153,7 @@ function HeroSection() {
       <DecorativeDots className="right-20 top-16 hidden md:block" />
 
       <Container className="relative grid items-center gap-10 py-6 sm:py-10 lg:gap-14 lg:py-12 lg:grid-cols-[1fr_1.05fr]">
-        <div className="relative z-10 w-full min-w-0 max-w-full">
+        <div className="relative z-30 w-full min-w-0 max-w-full">
           <span className="inline-flex rounded-md bg-[#55247d] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#db9dff]">
             I'm a web developer
           </span>
@@ -219,7 +219,7 @@ function HeroSection() {
         <div className="relative min-h-[430px] sm:min-h-[600px] lg:min-h-[600px]">
           <div className="absolute bottom-0 left-2 h-[600px] w-[440px] rounded-t-full bg-gradient-to-t from-[#1769e8]/30 to-[#a946f4]/5 blur-2xl md:left-10" />
 
-          <div className="absolute bottom-[-50px] left-[-100px] z-20 flex h-[650px] w-[490px] items-end justify-center overflow-hidden sm:left-[-50px] sm:h-[650px] sm:w-[450px] lg:left-[-100px] lg:h-[920px] lg:w-[570px]">
+          <div className="absolute bottom-[-20px] left-[-100px] z-20 flex h-[650px] w-[490px] items-end justify-center sm:left-[-50px] sm:h-[650px] sm:w-[450px] lg:left-[-100px] lg:h-[920px] lg:w-[570px] [mask-image:linear-gradient(to_bottom,black_45%,rgba(0,0,0,0.85)_60%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,black_45%,rgba(0,0,0,0.85)_60%,transparent_92%)]">
             <span className="absolute bottom-40 text-7xl font-bold text-white/5">
               R
             </span>
@@ -230,15 +230,27 @@ function HeroSection() {
               onError={(event) => {
                 event.currentTarget.style.display = "none";
               }}
-              className="relative z-10 h-full w-full object-contain object-bottom [-webkit-mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]"
+              className="relative z-10 h-full w-full object-contain object-bottom"
+            />
+
+            {/* Gradasi menghilang di bagian bawah foto */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-44 bg-gradient-to-t from-[#584860] via-[#242424]/80 to-transparent"
             />
           </div>
 
-          <div className="absolute right-[-50px] top-[120px] z-30 w-[480px] origin-top-right scale-[0.4] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-140px] lg:top-[70px] lg:w-[380px] lg:scale-[0.85]">
+          <div className="absolute right-[-30px] top-[120px] z-30 w-[480px] origin-top-right scale-[0.4] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-140px] lg:top-[70px] lg:w-[380px] lg:scale-[0.85]">
             <CodeCard />
           </div>
         </div>
       </Container>
+
+      {/* Gradasi menghilang di bagian bawah hero background menuju section About */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 sm:h-40 md:h-52 bg-gradient-to-b from-transparent via-[#242424]/75 to-[#584860]"
+      />
     </section>
   );
 }

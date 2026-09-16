@@ -30,7 +30,7 @@ function ContactSection() {
           </Button>
         </div>
 
-        <div className="glass-card w-full max-w-full overflow-hidden rounded-2xl p-6 sm:p-8">
+        <div className="glass-card w-full max-w-full overflow-hidden rounded-2xl p-5 sm:p-8">
           <p className="text-xs font-medium uppercase tracking-wider text-[#c05cff]">
             Follow Me
           </p>
@@ -42,18 +42,23 @@ function ContactSection() {
           <div className="mt-7 space-y-4 text-sm text-[#bbb4c0]">
             <a
               href="mailto:mohammadrizki.ramadhani24@gmail.com"
-              className="flex min-w-0 items-center gap-3 transition hover:text-white"
+              className="group flex min-w-0 items-center gap-2.5 transition hover:text-white"
+              title="mohammadrizki.ramadhani24@gmail.com"
             >
-              <HiEnvelope className="shrink-0 text-lg text-[#c05cff]" />
-              <span className="break-all">mohammadrizki.ramadhani24@gmail.com</span>
+              <HiEnvelope className="shrink-0 text-base text-[#c05cff] sm:text-lg" />
+              <span className="min-w-0 truncate whitespace-nowrap text-xs sm:text-sm">
+                mohammadrizki.ramadhani24@gmail.com
+              </span>
             </a>
 
             <a
               href="tel:+628770700-1216"
-              className="flex min-w-0 items-center gap-3 transition hover:text-white"
+              className="group flex min-w-0 items-center gap-2.5 transition hover:text-white"
             >
-              <HiPhone className="shrink-0 text-lg text-[#c05cff]" />
-              <span>+62 877-0700-1216</span>
+              <HiPhone className="shrink-0 text-base text-[#c05cff] sm:text-lg" />
+              <span className="whitespace-nowrap text-xs sm:text-sm">
+                +62 877-0700-1216
+              </span>
             </a>
           </div>
         </div>
