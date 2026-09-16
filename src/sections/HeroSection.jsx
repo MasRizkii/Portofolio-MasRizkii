@@ -234,7 +234,7 @@ function HeroSection() {
             />
           </div>
 
-          <div className="absolute right-[-40px] top-[120px] z-30 w-[480px] origin-top-right scale-[0.4] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-100px] lg:top-[90px] lg:w-[380px] lg:scale-[0.85]">
+          <div className="absolute right-[-50px] top-[120px] z-30 w-[480px] origin-top-right scale-[0.4] sm:right-[-20px] sm:w-[320px] sm:scale-[0.8] lg:right-[-100px] lg:top-[90px] lg:w-[380px] lg:scale-[0.85]">
             <CodeCard />
           </div>
         </div>
