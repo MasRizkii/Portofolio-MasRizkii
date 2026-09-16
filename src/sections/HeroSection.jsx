@@ -125,7 +125,7 @@ function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pt-28"
+      className="relative flex min-h-screen items-center overflow-hidden pt-20 lg:pt-24"
     >
       <Suspense fallback={null}>
       <LightPillar
@@ -152,7 +152,7 @@ function HeroSection() {
       <DecorativeDots className="-left-10 top-1/2" />
       <DecorativeDots className="right-20 top-16 hidden md:block" />
 
-      <Container className="relative grid items-center gap-14 py-16 lg:grid-cols-[1fr_1.05fr]">
+      <Container className="relative grid items-center gap-10 py-6 sm:py-10 lg:gap-14 lg:py-12 lg:grid-cols-[1fr_1.05fr]">
         <div className="relative z-10 w-full min-w-0 max-w-full">
           <span className="inline-flex rounded-md bg-[#55247d] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#db9dff]">
             I'm a web developer

@@ -12,25 +12,37 @@ const cx = (...parts) => parts.filter(Boolean).join(' ');
 
 const useResizeObserver = (callback, elements, dependencies) => {
   useEffect(() => {
-    if (!window.ResizeObserver) {
-      const handleResize = () => callback();
-      window.addEventListener('resize', handleResize);
-      callback();
-      return () => window.removeEventListener('resize', handleResize);
+    const runCallback = () => callback();
+
+    runCallback();
+    const t1 = setTimeout(runCallback, 50);
+    const t2 = setTimeout(runCallback, 250);
+    const t3 = setTimeout(runCallback, 600);
+
+    window.addEventListener('resize', runCallback);
+    window.addEventListener('orientationchange', runCallback);
+
+    const validElements = elements.map(ref => ref.current).filter(Boolean);
+
+    let observers = [];
+    if (window.ResizeObserver && validElements.length > 0) {
+      observers = validElements.map(el => {
+        const observer = new ResizeObserver(runCallback);
+        observer.observe(el);
+        return observer;
+      });
     }
 
-    const observers = elements.map(ref => {
-      if (!ref.current) return null;
-      const observer = new ResizeObserver(callback);
-      observer.observe(ref.current);
-      return observer;
-    });
-
-    callback();
     return () => {
-      observers.forEach(observer => observer?.disconnect());
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      window.removeEventListener('resize', runCallback);
+      window.removeEventListener('orientationchange', runCallback);
+      observers.forEach(observer => observer.disconnect());
     };
-  }, [callback, elements, dependencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callback, dependencies]);
 };
 
 const useImageLoader = (seqRef, onLoad, dependencies) => {
@@ -69,7 +81,7 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
   }, [onLoad, seqRef, dependencies]);
 };
 
-const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical) => {
+const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, seqRef) => {
   const rafRef = useRef(null);
   const lastTimestampRef = useRef(null);
   const offsetRef = useRef(0);
@@ -78,28 +90,6 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const seqSize = isVertical ? seqHeight : seqWidth;
-
-    if (seqSize > 0) {
-      offsetRef.current = ((offsetRef.current % seqSize) + seqSize) % seqSize;
-      const transformValue = isVertical
-        ? `translate3d(0, ${-offsetRef.current}px, 0)`
-        : `translate3d(${-offsetRef.current}px, 0, 0)`;
-      track.style.transform = transformValue;
-    }
-
-    if (prefersReduced) {
-      track.style.transform = isVertical ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)';
-      return () => {
-        lastTimestampRef.current = null;
-      };
-    }
 
     const animate = timestamp => {
       if (lastTimestampRef.current === null) {
@@ -114,15 +104,22 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
       velocityRef.current += (target - velocityRef.current) * easingFactor;
 
-      if (seqSize > 0) {
+      const fallbackSize = isVertical
+        ? (seqRef?.current?.scrollHeight || seqRef?.current?.offsetHeight || 0)
+        : (seqRef?.current?.scrollWidth || seqRef?.current?.offsetWidth || 0);
+
+      const effectiveSize = (isVertical ? seqHeight : seqWidth) || fallbackSize;
+
+      if (effectiveSize > 0) {
         let nextOffset = offsetRef.current + velocityRef.current * deltaTime;
-        nextOffset = ((nextOffset % seqSize) + seqSize) % seqSize;
+        nextOffset = ((nextOffset % effectiveSize) + effectiveSize) % effectiveSize;
         offsetRef.current = nextOffset;
 
         const transformValue = isVertical
           ? `translate3d(0, ${-offsetRef.current}px, 0)`
           : `translate3d(${-offsetRef.current}px, 0, 0)`;
         track.style.transform = transformValue;
+        track.style.webkitTransform = transformValue;
       }
 
       rafRef.current = requestAnimationFrame(animate);
@@ -137,7 +134,7 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef]);
+  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef, seqRef]);
 };
 
 export const LogoLoop = memo(
@@ -217,7 +214,7 @@ export const LogoLoop = memo(
 
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
 
-    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
+    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical, seqRef);
 
     const cssVariables = useMemo(
       () => ({
@@ -430,7 +427,6 @@ export const LogoLoop = memo(
         <div
           className={cx(
             'flex will-change-transform select-none relative z-0',
-            'motion-reduce:transform-none',
             isVertical ? 'flex-col h-max w-full' : 'flex-row w-max'
           )}
           ref={trackRef}

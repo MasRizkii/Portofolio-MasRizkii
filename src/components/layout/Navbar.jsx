@@ -89,7 +89,7 @@ function Navbar() {
       <Container className="flex h-20 items-center justify-between">
         <a
           href="#home"
-          className="text-xl font-bold tracking-tight"
+          className="text-2xl font-extrabold tracking-tight sm:text-3xl"
           onClick={handleLogoClick}
         >
           RizkiPorto
@@ -123,7 +123,7 @@ function Navbar() {
           onClick={() =>
             setIsOpen((current) => !current)
           }
-          className="flex h-12 w-12 items-center justify-center rounded-xl text-4xl text-white transition hover:bg-white/10 hover:text-[#b85cff] active:scale-95 md:hidden"
+          className="flex h-14 w-14 items-center justify-center rounded-2xl text-5xl text-white transition hover:bg-white/10 hover:text-[#b85cff] active:scale-95 md:hidden"
         >
           {isOpen ? <HiXMark /> : <HiBars3 />}
         </button>
