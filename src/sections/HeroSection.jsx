@@ -1,16 +1,152 @@
-import { HiArrowDownTray, HiPhone } from "react-icons/hi2";
-import { SiHtml5, SiJavascript, SiLaravel, SiReact, SiNextdotjs, SiPhp, SiTailwindcss,} from "react-icons/si";
+import { HiArrowUpRight } from "react-icons/hi2";
+import { FaWhatsapp } from "react-icons/fa6";
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiLaravel,
+  SiPhp,
+  SiMysql,
+} from "react-icons/si";
 
 import Container from "../components/common/Container";
 import Button from "../components/common/Button";
 import CodeCard from "../components/cards/CodeCard";
 import DecorativeDots from "../components/ui/DecorativeDots";
+import LogoLoop from "../components/ui/LogoLoop";
 import { lazy, Suspense } from "react";
 
 const LightPillar = lazy(() =>
   import("../components/ui/LightPillar")
 );
 import GradientText from "../components/ui/GradientText";
+
+const technologies = [
+  {
+    node: (
+      <span
+        title="HTML"
+        aria-label="HTML"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#f06529]"
+      >
+        <SiHtml5 />
+      </span>
+    ),
+    title: "HTML",
+  },
+  {
+    node: (
+      <span
+        title="CSS"
+        aria-label="CSS"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#264de4]"
+      >
+        <SiCss />
+      </span>
+    ),
+    title: "CSS",
+  },
+  {
+    node: (
+      <span
+        title="JavaScript"
+        aria-label="JavaScript"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#f7df1e]"
+      >
+        <SiJavascript />
+      </span>
+    ),
+    title: "JavaScript",
+  },
+  {
+    node: (
+      <span
+        title="React"
+        aria-label="React"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#61dafb]"
+      >
+        <SiReact />
+      </span>
+    ),
+    title: "React",
+  },
+  {
+    node: (
+      <span
+        title="Next.js"
+        aria-label="Next.js"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-white"
+      >
+        <SiNextdotjs />
+      </span>
+    ),
+    title: "Next.js",
+  },
+  {
+    node: (
+      <span
+        title="Tailwind CSS"
+        aria-label="Tailwind CSS"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#38bdf8]"
+      >
+        <SiTailwindcss />
+      </span>
+    ),
+    title: "Tailwind CSS",
+  },
+  {
+    node: (
+      <span
+        title="Node.js"
+        aria-label="Node.js"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#83cd29]"
+      >
+        <SiNodedotjs />
+      </span>
+    ),
+    title: "Node.js",
+  },
+  {
+    node: (
+      <span
+        title="Laravel"
+        aria-label="Laravel"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#ff2d20]"
+      >
+        <SiLaravel />
+      </span>
+    ),
+    title: "Laravel",
+  },
+  {
+    node: (
+      <span
+        title="PHP"
+        aria-label="PHP"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#777bb4]"
+      >
+        <SiPhp />
+      </span>
+    ),
+    title: "PHP",
+  },
+  {
+    node: (
+      <span
+        title="MySQL"
+        aria-label="MySQL"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#4479a1]"
+      >
+        <SiMysql />
+      </span>
+    ),
+    title: "MySQL",
+  },
+];
 
 function HeroSection() {
   return (
@@ -73,88 +209,37 @@ function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="https://wa.me/6287707001216">
               Contact Me
-              <HiPhone />
+              <FaWhatsapp className="text-lg text-green-400" />
             </Button>
 
             <Button
-              href="/cv/CV-Rizki.pdf"
+              href="#projects"
               variant="outline"
-              download
             >
-              Download CV
-              <HiArrowDownTray />
+              Show Project
+              <HiArrowUpRight />
             </Button>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 max-w-lg">
             <p className="mb-4 text-xs uppercase tracking-wider text-white/70">
               Technologies I work with
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-  {/* HTML */}
-  <span
-    title="HTML"
-    aria-label="HTML"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#f06529]"
-  >
-    <SiHtml5 />
-  </span>
-
-  {/* JavaScript */}
-  <span
-    title="JavaScript"
-    aria-label="JavaScript"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#f7df1e]"
-  >
-    <SiJavascript />
-  </span>
-
-  {/* React */}
-  <span
-    title="React"
-    aria-label="React"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#61dafb]"
-  >
-    <SiReact />
-  </span>
-
-  {/* Next.js */}
-  <span
-    title="Next.js"
-    aria-label="Next.js"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-white"
-  >
-    <SiNextdotjs />
-  </span>
-
-  {/* Tailwind CSS */}
-  <span
-    title="Tailwind CSS"
-    aria-label="Tailwind CSS"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#38bdf8]"
-  >
-    <SiTailwindcss />
-  </span>
-
-  {/* Laravel */}
-  <span
-    title="Laravel"
-    aria-label="Laravel"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#ff2d20]"
-  >
-    <SiLaravel />
-  </span>
-
-  {/* PHP */}
-  <span
-    title="PHP"
-    aria-label="PHP"
-    className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl text-[#777bb4]"
-  >
-    <SiPhp />
-  </span>
-</div>
+            <div className="w-full overflow-hidden rounded-2xl bg-white/5 p-2">
+              <LogoLoop
+                logos={technologies}
+                speed={35}
+                direction="left"
+                logoHeight={44}
+                gap={16}
+                pauseOnHover={true}
+                scaleOnHover={true}
+                fadeOut={true}
+                fadeOutColor="#242424"
+                ariaLabel="Technologies"
+              />
+            </div>
           </div>
         </div>
 

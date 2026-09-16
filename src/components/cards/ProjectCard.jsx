@@ -24,11 +24,24 @@ function ProjectCard({ project }) {
           {project.description}
         </p>
 
+        {project.technologies && project.technologies.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md bg-white/10 px-2.5 py-1 text-xs font-medium text-[#db9dff]"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+
         <a
           href={project.demoUrl !== "#" ? project.demoUrl : project.repositoryUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-4 flex items-center gap-1 text-sm font-medium text-[#cf85ff]"
+          className="mt-5 flex items-center gap-1 text-sm font-medium text-[#cf85ff] transition hover:text-white"
         >
           View Project
           <HiArrowUpRight />
